@@ -5,10 +5,7 @@ import com.ugurhmz.model.User;
 import com.ugurhmz.repository.UserRepository;
 import com.ugurhmz.services.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,5 +30,11 @@ public class UserController {
         return userService.saveUserList(usersList);
     }
 
+
+    // READ USER
+    @GetMapping("/{user-Id}/user")
+    public User findUserById(@PathVariable("user-Id") Long userId){
+        return userService.getUserById(userId);
+    }
 
 }

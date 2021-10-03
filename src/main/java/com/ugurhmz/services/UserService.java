@@ -1,6 +1,7 @@
 package com.ugurhmz.services;
 
 
+import com.ugurhmz.exception.ResourceNotFoundException;
 import com.ugurhmz.model.User;
 import com.ugurhmz.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +31,17 @@ public class UserService {
         System.out.println("user list successfully saved...");
         return userRepository.saveAll(userList);
     }
+
+
+    // READ USER
+    public User getUserById(Long id){
+       User user = userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id+" User Not Found!!"));
+        System.out.println("user : "+user);
+       return user;
+    }
+
+
+
 
 
     // GET USER LIST

@@ -38,6 +38,17 @@ public class UserController {
     }
 
 
+
+
+    // READ USER NAME
+    @GetMapping("/user/{firstName}")
+    public User findUserByName(@PathVariable("firstName") String firstName){
+        return userService.getUserByFirstName(firstName);
+    }
+
+
+
+
     // READ USERS LIST
     @GetMapping("/get-users-list")
     public List<User> findAllUsers(){

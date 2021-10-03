@@ -40,6 +40,14 @@ public class UserService {
        return user;
     }
 
+    // READ USER FIRST NAME
+    public User getUserByFirstName(String firstName) {
+        User user = userRepository.findByName(firstName);
+        return user;
+
+    }
+
+
 
     // GET USERS LIST
     public List<User> getUserList(){

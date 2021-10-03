@@ -56,4 +56,20 @@ public class UserService {
         return usersList;
     }
 
+
+
+    // UPDATE USER
+    public User updateUser(Long userId, User user){
+        User existingUser = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException(userId+" User Not Found!!"));
+
+        existingUser.setFirstName(user.getFirstName());
+        existingUser.setLastName(user.getLastName());
+        existingUser.setEmail(user.getEmail());
+        System.out.println("User updated successfully");
+        return userRepository.save(existingUser);
+
+    }
+
+
 }

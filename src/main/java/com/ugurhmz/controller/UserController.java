@@ -5,9 +5,11 @@ import com.ugurhmz.model.User;
 import com.ugurhmz.repository.UserRepository;
 import com.ugurhmz.services.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/ugurv1/")
@@ -65,5 +67,13 @@ public class UserController {
         return userService.updateUser(userId,user);
     }
 
+
+    // DELETE USER
+    @DeleteMapping("/{user-Id}/delete-user")
+    public ResponseEntity<Map<String,Boolean>> deleteUserById(
+            @PathVariable("user-Id") Long userId)
+    {
+        return userService.deleteUser(userId);
+    }
 
 }

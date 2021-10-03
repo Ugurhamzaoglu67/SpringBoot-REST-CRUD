@@ -5,11 +5,14 @@ import com.ugurhmz.exception.ResourceNotFoundException;
 import com.ugurhmz.model.User;
 import com.ugurhmz.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -69,6 +72,24 @@ public class UserService {
         System.out.println("User updated successfully");
         return userRepository.save(existingUser);
 
+    }
+
+
+
+    // DELETE USER
+    public ResponseEntity<Map<String, Boolean>> deleteUser(Long userId){
+
+        //  Find user by id
+        User user = userRepository.findById(userId)
+                                    .orElseThrow(() -> new ResourceNotFoundException(userId+" User Not Found!!"));
+
+        // delete directly user
+        userRepository.delete(user);
+
+        Map<String,Boolean> response = new HashMap<>();
+        response.put("User successfully deleted.",Boolean.TRUE);
+
+        return ResponseEntity.ok(response);
     }
 
 

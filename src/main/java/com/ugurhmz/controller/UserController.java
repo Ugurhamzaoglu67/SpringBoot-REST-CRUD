@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/ugurv1/")
 @RequiredArgsConstructor
@@ -24,6 +26,12 @@ public class UserController {
         return userService.saveUser(user);
     }
 
+
+    // CREATE USERS LIST
+    @PostMapping("/save-users-list")
+    public List<User> postUsersList(@RequestBody List<User> usersList){
+        return userService.saveUserList(usersList);
+    }
 
 
 }

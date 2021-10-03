@@ -41,13 +41,11 @@ public class UserService {
     }
 
 
-
-
-
-    // GET USER LIST
+    // GET USERS LIST
     public List<User> getUserList(){
-        System.out.println("All users listed...");
-        return userRepository.findAll();
+        List<User> usersList = userRepository.findAll();
+        System.out.println(usersList);
+        return usersList;
     }
 
 }

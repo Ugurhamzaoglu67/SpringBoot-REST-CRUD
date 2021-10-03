@@ -37,4 +37,12 @@ public class UserController {
         return userService.getUserById(userId);
     }
 
+
+    // READ USERS LIST
+    @GetMapping("/get-users-list")
+    public List<User> findAllUsers(){
+        return userService.getUserList();
+    }
+
+
 }
